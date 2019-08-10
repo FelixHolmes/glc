@@ -14,7 +14,7 @@ type Error struct {
 }
 
 const (
-	PrefixName = "github.com/jueyoq/glc/"
+	PrefixName = "github.com/FelixHolmes/glc/"
 )
 
 // WrapError 包装err
