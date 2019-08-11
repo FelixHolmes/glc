@@ -14,7 +14,7 @@ type Error struct {
 }
 
 const (
-	PrefixName = "github.com/FelixHolmes/glc/"
+	PrefixName = "github.com/FelixHolmes/server/"
 )
 
 // WrapError 包装err
@@ -31,7 +31,7 @@ func Errorf(msg string, a ...interface{}) *Error {
 }
 
 func fixLocPreStr(s string) string {
-	t := strings.SplitN(s, "glc", 2)
+	t := strings.SplitN(s, "server", 2)
 	if len(t) == 2 {
 		return warpPreStr(t[1])
 	}
