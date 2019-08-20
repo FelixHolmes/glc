@@ -16,11 +16,13 @@ type Server interface {
 }
 type Context struct {
 	index int
+	funcs []HandleFunc
 }
 
 func (c *Context) Next() {
 	c.index++
 	//TODO:拿不到上下文
+	c.funcs[c.index](c)
 }
 
 // ServerConfig 服务通用配置

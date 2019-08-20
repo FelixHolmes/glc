@@ -6,12 +6,15 @@ import (
 )
 
 func NewTcpServer(conf server.Config) server.Server {
-	return &TcpServer{}
+	return &TcpServer{
+		handlers: []server.HandleFunc{},
+		conf:     conf,
+	}
 }
 
 type TcpServer struct {
 	handlers []server.HandleFunc
-	task     server.HandleFunc
+	conf     server.Config
 }
 
 func (s *TcpServer) Run() (*session.Session, error) {
@@ -33,5 +36,5 @@ func (s *TcpServer) Reload(conf server.Config) error {
 }
 
 func (s *TcpServer) mergeFunc() {
-	s.handlers = append(s.handlers, s.task)
+	s.handlers = append(s.handlers, s.conf.HandleFunc)
 }
